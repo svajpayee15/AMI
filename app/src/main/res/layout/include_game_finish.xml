@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The panel that appears when an activity is over.
+
+  Shared by breathing, bubble pop and memory pairs because all three previously just
+  stopped: the last card turned over, the last breath finished, and the screen sat there
+  with no way to go again short of backing out and re-entering. Every one of them now ends
+  on the same two choices, in the same place.
+
+  Sits over a dimmed scene rather than replacing it, so the thing the person just finished
+  is still behind the card.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <FrameLayout
+        android:id="@+id/gameFinishScrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66101820"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            style="@style/AmiGameCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/space_lg"
+            android:layout_marginEnd="@dimen/space_lg">
+
+            <TextView
+                android:id="@+id/gameFinishTitle"
+                style="@style/AmiGameCardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/gameFinishBody"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:textColor="@color/game_ink_soft" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGameAgain"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="@string/game_again" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGameDone"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/game_back" />
+        </LinearLayout>
+    </FrameLayout>
+</merge>

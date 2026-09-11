@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Incoming check-in call.
+
+  Modelled on a phone call rather than a notification, because that is the interaction
+  an older user already knows how to answer without being taught. Controls are oversized
+  even by this app's standards: this screen appears over the lock screen, often when the
+  user is not wearing glasses.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingStart="@dimen/screen_gutter"
+    android:paddingEnd="@dimen/screen_gutter"
+    android:paddingTop="@dimen/space_xxl"
+    android:paddingBottom="@dimen/space_xl">
+
+    <TextView
+        android:id="@+id/callStatus"
+        style="@style/AmiText.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xl"
+        android:letterSpacing="0.08"
+        android:textAllCaps="true"
+        android:text="@string/call_incoming" />
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/space_lg"
+        android:background="@drawable/bg_icon_circle"
+        android:padding="34dp"
+        android:src="@drawable/ic_ami_brain"
+        app:tint="@color/ami_on_primary_container"
+        android:importantForAccessibility="no"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/callerName"
+        style="@style/AmiText.Display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_lg"
+        android:text="@string/call_caller_name" />
+
+    <TextView
+        android:id="@+id/callReason"
+        style="@style/AmiText.Body.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm"
+        android:gravity="center_horizontal" />
+
+    <!-- Live caption of what AMI is saying, so a hard-of-hearing user can read along. -->
+    <TextView
+        android:id="@+id/callCaption"
+        style="@style/AmiText.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xl"
+        android:gravity="center_horizontal"
+        android:minHeight="96dp"
+        android:visibility="gone" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Ringing controls -->
+    <LinearLayout
+        android:id="@+id/ringingControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDecline"
+            style="@style/AmiButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/space_sm"
+            android:text="@string/call_decline"
+            app:backgroundTint="@color/ami_danger"
+            app:icon="@drawable/ic_call_end" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAnswer"
+            style="@style/AmiButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/space_sm"
+            android:text="@string/call_answer"
+            app:backgroundTint="@color/ami_success"
+            app:icon="@drawable/ic_call" />
+    </LinearLayout>
+
+    <!-- In-call control -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHangUp"
+        style="@style/AmiButton"
+        android:layout_height="wrap_content"
+        android:text="@string/call_hang_up"
+        android:visibility="gone"
+        app:backgroundTint="@color/ami_danger"
+        app:icon="@drawable/ic_call_end" />
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One activity on the relaxation hub. The whole card is the touch target. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AmiCard"
+    android:layout_marginTop="@dimen/space_md"
+    android:background="@drawable/bg_ami_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="@dimen/touch_target">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/gameIcon"
+            style="@style/AmiPointIcon"
+            android:contentDescription="@null" />
+
+        <TextView
+            android:id="@+id/gameTitle"
+            style="@style/AmiText.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_md"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/gameBody"
+        style="@style/AmiText.Body.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_md" />
+</LinearLayout>

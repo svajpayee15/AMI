@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One memory card. The symbol is sized generously and centred; the card itself carries the
+  content description, which MemoryActivity rewrites as it is turned over.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_memory_card_down"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="@dimen/touch_target">
+
+    <TextView
+        android:id="@+id/memoryCardSymbol"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="44sp" />
+</FrameLayout>

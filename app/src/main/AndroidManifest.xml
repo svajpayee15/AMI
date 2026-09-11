@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--
+      Since Android 14 this is granted by default only to calling and alarm apps. A
+      medicine reminder qualifies, but it still needs a Play Console declaration, and
+      the app checks canUseFullScreenIntent() at runtime before relying on it.
+    -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <!--
+      Health Connect. Replaces Google Fit, whose APIs shut down at the end of 2026.
+      Reading these also requires a Play Console health data declaration before release.
+    -->
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.READ_WEIGHT" />
+    <uses-permission android:name="android.permission.health.WRITE_WEIGHT" />
+    <uses-permission android:name="android.permission.health.READ_HEIGHT" />
+    <uses-permission android:name="android.permission.health.WRITE_HEIGHT" />
+    <uses-permission android:name="android.permission.health.READ_BLOOD_PRESSURE" />
+    <uses-permission android:name="android.permission.health.WRITE_BLOOD_PRESSURE" />
+    <uses-permission android:name="android.permission.health.READ_BLOOD_GLUCOSE" />
+    <uses-permission android:name="android.permission.health.WRITE_BLOOD_GLUCOSE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
+
+    <application
+        android:name=".AmiApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AMI">
+
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".call.AmiCallActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".health.VitalsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AMI" />
+
+        <!--
+          Health Connect requires a screen explaining how the data is used, reachable
+          from its own permission UI. It must show the same policy as the Play listing.
+        -->
+        <activity
+            android:name=".health.HealthRationaleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AMI">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE"
+            android:targetActivity=".health.HealthRationaleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false"
+            android:label="@string/report_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".wellbeing.WellbeingActivity"
+            android:exported="false"
+            android:label="@string/wellbeing_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".caretaker.CaretakerActivity"
+            android:exported="false"
+            android:label="@string/caretaker_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.GamesActivity"
+            android:exported="false"
+            android:label="@string/games_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.BreathingActivity"
+            android:exported="false"
+            android:label="@string/game_breathe_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.BubbleActivity"
+            android:exported="false"
+            android:label="@string/game_bubbles_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.MemoryActivity"
+            android:exported="false"
+            android:label="@string/game_memory_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.PondActivity"
+            android:exported="false"
+            android:label="@string/game_water_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".games.MusicActivity"
+            android:exported="false"
+            android:label="@string/game_music_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".profile.ProfileSettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:theme="@style/Theme.AMI" />
+
+        <activity
+            android:name=".profile.EditProfileActivity"
+            android:exported="false"
+            android:label="@string/profile_edit_title"
+            android:theme="@style/Theme.AMI"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".profile.InfoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AMI" />
+
+        <service
+            android:name=".AmiAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:label="@string/accessibility_service_label"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <service
+            android:name=".reminders.AmiWellnessService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <receiver
+            android:name=".reminders.MedicineAlarmReceiver"
+            android:exported="false" />
+
+        <!-- Weekly caregiver digest; re-armed by itself and by BootReceiver. -->
+        <receiver
+            android:name=".reminders.WeeklySummaryReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".reminders.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

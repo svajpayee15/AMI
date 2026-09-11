@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing scale -->
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_md">16dp</dimen>
+    <dimen name="space_lg">24dp</dimen>
+    <dimen name="space_xl">32dp</dimen>
+    <dimen name="space_xxl">40dp</dimen>
+
+    <dimen name="screen_gutter">20dp</dimen>
+    <dimen name="card_radius">24dp</dimen>
+    <dimen name="card_padding">20dp</dimen>
+    <dimen name="control_radius">18dp</dimen>
+    <dimen name="tile_radius">16dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+
+    <!-- Wellbeing screen -->
+    <dimen name="metric_tile">56dp</dimen>
+    <dimen name="chart_height">260dp</dimen>
+
+    <!--
+      Touch targets. Android's minimum is 48dp; this app targets users with
+      reduced dexterity and vision, so controls are considerably larger.
+    -->
+    <dimen name="touch_target">68dp</dimen>
+    <dimen name="touch_target_small">56dp</dimen>
+    <dimen name="icon_size">28dp</dimen>
+
+    <!--
+      Bottom navigation. Material's default tab is 56dp with a 24dp icon and a 12sp
+      label, which is below everything else this app promises its users. Four tabs on
+      a 360dp screen leave 90dp of width each, so the icon and label can both grow;
+      the padding takes each tab to roughly 73dp tall, past the app's 68dp floor.
+    -->
+    <dimen name="nav_icon_size">30dp</dimen>
+    <dimen name="nav_item_padding">12dp</dimen>
+</resources>

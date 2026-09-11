@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Outline tapping-hand, as in the design's hint rows. Stroked rather than filled so it
+  reads as a line drawing against the illustration, the way the reference does.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Hand and forearm. -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.4"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M11,11.5 L11,6.6 A1.2,1.2 0 0,1 13.4,6.6 L13.4,12.4 M13.4,10.4 A1.1,1.1 0 0,1 15.6,10.4 L15.6,12.6 M15.6,11.4 A1.1,1.1 0 0,1 17.8,11.4 L17.8,15.4 C17.8,18.6 15.8,20.8 12.9,20.8 C10.2,20.8 8.6,19.4 7.7,17.3 L6.3,14.1 A1.15,1.15 0 0,1 8.3,13 L9.2,14.5" />
+    <!-- Tap ripple. -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M6.6,8.2 A4.2,4.2 0 0,1 8.4,4.4 M4.2,9.4 A6.6,6.6 0 0,1 7,4" />
+</vector>

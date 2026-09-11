@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The frame every top-level screen is poured into by AmiNavBar. The screen's own
+  layout is inflated into amiNavContent; the bar below it never moves or scrolls
+  away, so the four destinations are one tap apart from anywhere in the app.
+
+  The bar lives inside amiNavBarContainer rather than standing alone because the
+  system gesture inset has to be padded onto something *behind* the bar - padding
+  the bar itself would eat into the 80dp the tabs need.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/amiNavRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/amiNavContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/amiNavBarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/ami_surface">
+
+        <!-- A visible 2dp rule, not a hairline: the rest of the app does the same. -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/ami_border" />
+
+        <!--
+          The tabs carry the height, not the bar. Material's item is a fixed 56dp, so
+          the extra comes from itemPadding rather than from a taller bar - sizing the
+          bar instead leaves a band along the bottom that looks tappable and is not.
+
+          The bar adds the gesture-bar inset to itself as bottom padding, which is why
+          AmiNavBar does not also pad the container around it.
+        -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/amiBottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ami_surface"
+            app:elevation="0dp"
+            app:itemIconSize="@dimen/nav_icon_size"
+            app:itemPaddingTop="@dimen/nav_item_padding"
+            app:itemPaddingBottom="@dimen/nav_item_padding"
+            app:itemIconTint="@color/ami_nav_item"
+            app:itemTextColor="@color/ami_nav_item"
+            app:itemRippleColor="@color/ami_nav_ripple"
+            app:itemTextAppearanceActive="@style/AmiNavLabel.Active"
+            app:itemTextAppearanceInactive="@style/AmiNavLabel"
+            app:itemHorizontalTranslationEnabled="false"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_ami_nav" />
+    </LinearLayout>
+
+</LinearLayout>

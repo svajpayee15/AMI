@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Memory pairs, restyled onto the same scene chrome as the other four so the set reads as
+  one thing. The grid floats over the painted background rather than sitting on a card.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/game_memory_bottom">
+
+    <com.example.ami.games.MemorySceneView
+        android:id="@+id/memoryScene"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <GridLayout
+        android:id="@+id/memoryGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/space_md"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="@dimen/space_md"
+        android:layout_marginBottom="90dp"
+        android:columnCount="3"
+        android:rowCount="4" />
+
+    <include layout="@layout/include_game_chrome" />
+
+    <include layout="@layout/include_game_finish" />
+</FrameLayout>

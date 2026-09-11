@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The cream rounded card the design uses for the music player and the finish panels. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/game_cream" />
+    <corners android:radius="22dp" />
+</shape>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One numeric field as a pair of large +/- buttons rather than a keypad. Typing a number
+  into a phone keyboard is one of the harder interactions for this audience; nudging a
+  value up and down is one of the easier ones, and it cannot produce invalid input.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/stepperLabel"
+        style="@style/AmiText.FieldLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stepperMinus"
+            style="@style/AmiButton.Secondary"
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:text="@string/stepper_minus"
+            android:textSize="26sp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            app:iconPadding="0dp" />
+
+        <TextView
+            android:id="@+id/stepperValue"
+            style="@style/AmiText.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minHeight="@dimen/touch_target" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/stepperPlus"
+            style="@style/AmiButton.Secondary"
+            android:layout_width="@dimen/touch_target"
+            android:layout_height="@dimen/touch_target"
+            android:text="@string/stepper_plus"
+            android:textSize="26sp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            app:iconPadding="0dp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Full-bleed scene with the shared chrome over it. No start button and no counter: the
+  exercise begins when the screen opens and the close X ends it, which is the reference's
+  flow and one fewer decision for someone who opened this because they felt anxious.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/game_sky_bottom">
+
+    <com.example.ami.games.BreathingView
+        android:id="@+id/breathingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/include_game_chrome" />
+
+    <include layout="@layout/include_game_finish" />
+</FrameLayout>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      Type scale. Everything is in sp so the OS font-size setting scales it,
+      which matters a lot for this app's users. Nothing drops below 17sp.
+    -->
+    <style name="AmiText">
+        <item name="android:textColor">@color/ami_text_primary</item>
+        <item name="android:lineSpacingMultiplier">1.25</item>
+    </style>
+
+    <style name="AmiText.Display">
+        <item name="android:textSize">34sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+
+    <style name="AmiText.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1.15</item>
+    </style>
+
+    <style name="AmiText.Subtitle">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AmiText.Body">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AmiText.Body.Secondary">
+        <item name="android:textColor">@color/ami_text_secondary</item>
+    </style>
+
+    <style name="AmiText.Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/ami_text_secondary</item>
+    </style>
+
+    <style name="AmiText.FieldLabel">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/ami_text_primary</item>
+    </style>
+
+    <!--
+      Bottom navigation labels. 15sp is the one place the app drops below its 17sp
+      floor: the label sits directly under a 30dp icon that carries the same meaning,
+      and four labels have to fit across the narrowest supported screen. Bold and
+      full-contrast to make up for the size.
+    -->
+    <style name="AmiNavLabel" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="AmiNavLabel.Active" />
+
+    <!-- Cards -->
+    <style name="AmiCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_ami_card</item>
+        <item name="android:padding">@dimen/card_padding</item>
+    </style>
+
+    <!-- Buttons: large targets, real labels, never icon-only -->
+    <style name="AmiButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/touch_target</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:paddingStart">@dimen/space_lg</item>
+        <item name="android:paddingEnd">@dimen/space_lg</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/control_radius</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/space_md</item>
+        <item name="iconSize">@dimen/icon_size</item>
+        <item name="backgroundTint">@color/ami_primary</item>
+        <item name="android:textColor">@color/ami_on_primary</item>
+        <item name="iconTint">@color/ami_on_primary</item>
+        <item name="rippleColor">#33FFFFFF</item>
+    </style>
+
+    <style name="AmiButton.Secondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/touch_target</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/control_radius</item>
+        <item name="strokeColor">@color/ami_primary</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/space_md</item>
+        <item name="iconSize">@dimen/icon_size</item>
+        <item name="android:textColor">@color/ami_primary</item>
+        <item name="iconTint">@color/ami_primary</item>
+    </style>
+
+    <!-- Text fields: visible 2dp border, thickens to 3dp accent on focus -->
+    <style name="AmiInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/touch_target</item>
+        <item name="android:background">@drawable/bg_ami_field</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/ami_text_primary</item>
+        <item name="android:textColorHint">@color/ami_hint</item>
+        <item name="android:paddingStart">@dimen/space_md</item>
+        <item name="android:paddingEnd">@dimen/space_md</item>
+        <item name="android:paddingTop">@dimen/space_md</item>
+        <item name="android:paddingBottom">@dimen/space_md</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- Status pill used for the service state -->
+    <style name="AmiPill">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">@dimen/space_md</item>
+        <item name="android:paddingEnd">@dimen/space_md</item>
+        <item name="android:paddingTop">@dimen/space_sm</item>
+        <item name="android:paddingBottom">@dimen/space_sm</item>
+    </style>
+
+    <!-- Icon + title + body row, used by onboarding and the home cards -->
+    <style name="AmiPointIcon">
+        <item name="android:layout_width">52dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:background">@drawable/bg_icon_circle</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="tint">@color/ami_on_primary_container</item>
+    </style>
+
+    <style name="AmiPointTitle" parent="AmiText.Subtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--
+      Segmented control. One segment per option, equal weight, selected one swapped to a
+      raised pill in code. 56dp rather than the app's usual 68dp target: three of these
+      sit in a row and still clear Android's 48dp minimum comfortably.
+    -->
+    <style name="AmiSegment" parent="AmiText.Body">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/touch_target_small</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="AmiSegment.Compact">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingStart">@dimen/space_md</item>
+        <item name="android:paddingEnd">@dimen/space_md</item>
+    </style>
+
+    <!-- Grouped settings list, as used by the profile/settings screen. -->
+    <style name="AmiSectionHeader" parent="AmiText.Label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/space_lg</item>
+        <item name="android:layout_marginBottom">@dimen/space_sm</item>
+        <item name="android:paddingStart">@dimen/space_xs</item>
+        <item name="android:paddingEnd">@dimen/space_xs</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.06</item>
+    </style>
+
+    <style name="AmiSettingsGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_settings_group</item>
+    </style>
+
+    <style name="AmiPointBody" parent="AmiText.Body.Secondary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+
+    <!--
+      Relaxation-scene chrome. These screens are full-bleed illustration with text laid
+      straight onto it, so every style here carries its own shadow: without one, cream
+      text over a pale sky or a white bubble is unreadable exactly where the artwork is
+      brightest.
+    -->
+    <style name="AmiGameHeadline">
+        <item name="android:textSize">27sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/game_headline</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:shadowColor">@color/game_headline_shadow</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">3</item>
+        <item name="android:shadowRadius">8</item>
+    </style>
+
+    <!--
+      The hint line. "cursive" is Android's own handwriting family, which is the closest
+      thing on-device to the script in the design - and unlike a bundled font it cannot
+      fall back to a box glyph on a device that lacks it.
+    -->
+    <style name="AmiGameHint">
+        <item name="android:textSize">19sp</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#99000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">6</item>
+    </style>
+
+    <!-- Cream card, as used by the music player and the finish panels. -->
+    <style name="AmiGameCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_game_card</item>
+        <item name="android:padding">@dimen/space_lg</item>
+    </style>
+
+    <style name="AmiGameCardText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/game_ink</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.03</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Row separator. The design uses a hairline; this is 1dp of a real border colour rather
+  than a 0.5dp grey-on-grey, which the app's palette notes rule out.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/ami_border" />
+</shape>

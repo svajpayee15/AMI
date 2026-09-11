@@ -1,0 +1,486 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">AMI</string>
+    <string name="accessibility_service_label">AMI Accessibility Service</string>
+    <string name="accessibility_service_description">This service allows AMI to inspect the UI of other apps to provide assistance.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome">Welcome to AMI</string>
+    <string name="onboarding_tagline">Your patient digital caretaker</string>
+    <string name="onboarding_section">Here\'s exactly what AMI does</string>
+
+    <string name="onboarding_screen_title">It reads your screen</string>
+    <string name="onboarding_screen_body">When you ask for help, AMI reads the text and button labels visible in whatever app is open, and sends them to a third-party AI service so it can work out what to tap next.</string>
+
+    <string name="onboarding_guide_title">It guides you out loud</string>
+    <string name="onboarding_guide_body">AMI speaks each step and points to one button at a time, so you never have to guess what to press.</string>
+
+    <string name="onboarding_medicine_title">It checks in about medicine</string>
+    <string name="onboarding_medicine_body">If you set up reminders, AMI asks you by voice at the scheduled time and remembers your answer.</string>
+
+    <string name="onboarding_caregiver_title">It can alert your family</string>
+    <string name="onboarding_caregiver_body">If you miss a check-in, AMI emails the first caregiver you have chosen. If nobody answers the phone at all, or the misses keep adding up, it works down the rest of your list. Nobody outside that list is ever contacted.</string>
+
+    <string name="onboarding_privacy_title">It never reads passwords or banking</string>
+    <string name="onboarding_privacy_body">Password fields are skipped on your device, and AMI refuses to read banking, payment and authenticator apps at all. Nothing from them is sent anywhere.</string>
+
+    <string name="onboarding_footer">You can add or change who gets alerted at any time in Settings.</string>
+    <string name="onboarding_continue">I understand — continue</string>
+
+    <!--
+      Bottom navigation. One word each, because these sit under an icon in a 90dp
+      column. "Report" rather than "Care report" and "Health" rather than "Your
+      health" for the same reason - the screen itself still carries the full title.
+    -->
+    <string name="nav_home">Home</string>
+    <string name="nav_health">Health</string>
+    <string name="nav_report">Report</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home -->
+    <string name="home_title">AMI</string>
+    <string name="home_subtitle">Digital caretaker</string>
+
+    <string name="home_service_card_title">Assistant service</string>
+    <string name="home_service_active">Active</string>
+    <string name="home_service_inactive">Not active</string>
+    <string name="home_service_body_inactive">AMI needs the accessibility service turned on before it can read your screen and guide you.</string>
+    <string name="home_service_body_active">AMI is ready. Tap the floating button any time to ask for help.</string>
+    <string name="home_service_enable">Turn on AMI</string>
+
+    <string name="home_medicine_card_title">Medicine schedule</string>
+    <string name="home_medicine_empty">No medicines yet. Add your first one below.</string>
+    <string name="home_medicine_name_label">Medicine name</string>
+    <string name="home_medicine_name_hint">For example, Morning Pill</string>
+    <string name="home_medicine_dosage_label">How to take it (optional)</string>
+    <string name="home_medicine_dosage_hint">For example, one tablet with food</string>
+    <string name="home_medicine_time_label">Reminder time</string>
+    <string name="home_medicine_time_placeholder">Choose a time</string>
+    <string name="home_medicine_multi_hint">For a medicine taken more than once a day, add it again with the next time. AMI checks each one separately.</string>
+    <string name="home_medicine_add">Add reminder</string>
+    <string name="home_medicine_taken_today">Taken today</string>
+    <string name="home_medicine_remove">Remove</string>
+    <string name="home_medicine_remove_message">Stop reminding about %1$s at %2$s?</string>
+    <string name="home_medicine_remove_description">Remove the %1$s reminder at %2$s</string>
+
+    <string name="home_report_card_title">This week</string>
+    <string name="home_report_open">See the full report</string>
+
+    <string name="home_caregiver_card_title">Who gets alerted</string>
+    <string name="home_caregiver_label">Email address</string>
+    <string name="home_caregiver_hint">caregiver@example.com</string>
+    <string name="home_caregiver_none">Nobody is set up yet. Without a caregiver, a missed medicine check-in goes unreported.</string>
+    <string name="home_caregiver_one">%1$s is alerted if a check-in is missed.</string>
+    <plurals name="home_caregiver_many">
+        <item quantity="one">%1$s is alerted first, then 1 more person if the misses continue.</item>
+        <item quantity="other">%1$s is alerted first, then %2$d more people if the misses continue.</item>
+    </plurals>
+    <string name="home_caregiver_manage">Manage caregivers</string>
+
+    <!-- Care report / history -->
+    <string name="report_title">Care report</string>
+    <string name="report_adherence_title">Medicine taken</string>
+    <string name="report_no_data">No check-ins yet. Once a reminder is set up, this is where the answers appear.</string>
+    <plurals name="report_all_taken">
+        <item quantity="one">The one check-in this week was confirmed. Nothing missed.</item>
+        <item quantity="other">All %1$d check-ins confirmed this week. Nothing missed.</item>
+    </plurals>
+    <plurals name="report_summary">
+        <item quantity="one">%1$d%% confirmed this week — %2$d of the single check-in.</item>
+        <item quantity="other">%1$d%% confirmed this week — %2$d of %3$d check-ins.</item>
+    </plurals>
+    <plurals name="report_missed_streak">
+        <item quantity="one">Every check-in has been missed since yesterday.</item>
+        <item quantity="other">Every check-in has been missed for the last %1$d days.</item>
+    </plurals>
+    <!-- A percentage, not a count - "1% confirmed" is as singular as it ever gets. -->
+    <string name="report_thirty_day" tools:ignore="PluralsCandidate">Over 30 days: %1$d%% confirmed (%2$d of %3$d).</string>
+    <!-- "n of m confirmed" - the count that would decide the plural is the total, and
+         the sentence reads the same either way. -->
+    <string name="report_per_medicine" tools:ignore="PluralsCandidate">%1$s: %2$d of %3$d confirmed</string>
+
+    <string name="report_checkins_title">Every check-in</string>
+    <string name="report_checkins_empty">No check-ins recorded yet.</string>
+
+    <string name="report_actions_title">What AMI did</string>
+    <string name="report_actions_body">Every step AMI took while guiding a spoken request. The screen contents it read are never stored — only the step and what it said out loud.</string>
+    <string name="report_actions_empty">AMI hasn\'t guided any requests yet.</string>
+    <string name="report_actions_clear">Clear this log</string>
+    <string name="report_actions_clear_message">This removes the record of what AMI has done. Medicine check-ins are not affected.</string>
+    <string name="report_action_when">%1$s · %2$s</string>
+    <string name="report_action_unknown_app">unknown app</string>
+
+    <string name="outcome_taken">Taken</string>
+    <string name="outcome_not_taken">Not taken</string>
+    <string name="outcome_declined">Declined</string>
+    <string name="outcome_no_answer">No answer</string>
+    <string name="outcome_done">Done</string>
+    <string name="outcome_not_found">Not found</string>
+    <string name="outcome_blocked">Refused</string>
+    <string name="outcome_stopped">Stopped</string>
+    <string name="outcome_step">Step</string>
+
+    <!-- Vitals -->
+    <string name="vitals_title">Your health</string>
+    <string name="vitals_today">Today</string>
+    <string name="vitals_steps">Steps today: %1$d</string>
+    <string name="vitals_bmi">BMI: %1$s</string>
+    <string name="vitals_bp">Blood pressure: %1$d / %2$d</string>
+    <string name="vitals_sugar">Blood sugar: %1$d mg/dL</string>
+    <string name="vitals_none_yet">No readings yet — add them below.</string>
+
+    <string name="vitals_hc_connected">Connected to Health Connect.</string>
+    <string name="vitals_hc_needs_permission">Allow Health Connect so AMI can read your step count and any readings from your other health devices.</string>
+    <string name="vitals_hc_unavailable">Health Connect isn\'t available on this phone, so readings you enter here are stored in AMI only.</string>
+    <string name="vitals_connect">Allow Health Connect</string>
+
+    <string name="vitals_enter">Enter your readings</string>
+    <string name="vitals_enter_hint">Your phone can count steps on its own, but blood pressure and blood sugar have to come from a device or from you.</string>
+    <string name="vitals_weight">Weight</string>
+    <string name="vitals_height">Height</string>
+    <string name="vitals_systolic">Blood pressure — upper number</string>
+    <string name="vitals_diastolic">Blood pressure — lower number</string>
+    <string name="vitals_glucose">Blood sugar</string>
+    <string name="vitals_increase">Increase %1$s</string>
+    <string name="vitals_decrease">Decrease %1$s</string>
+    <string name="vitals_save">Save readings</string>
+    <string name="vitals_saved">Readings saved</string>
+    <string name="vitals_urgent_subject">Health reading</string>
+
+    <string name="vitals_food_title">What to eat today</string>
+    <string name="vitals_food_empty">Tap below for food ideas based on your readings.</string>
+    <string name="vitals_food_thinking">Thinking…</string>
+    <string name="vitals_food_no_data">Add a reading above first, then I can suggest food.</string>
+    <string name="vitals_food_action">Suggest food for today</string>
+
+    <string name="stepper_minus">−</string>
+    <string name="stepper_plus">+</string>
+
+    <string name="health_rationale_title">How AMI uses your health data</string>
+    <string name="health_rationale_body">AMI reads your step count, weight, height, blood pressure and blood sugar from Health Connect so it can suggest suitable food and notice a reading that needs attention.
+
+This data stays on your phone. It is never sold, never shared with advertisers, and never sent to anyone except the caregivers you configure — and then only when a reading needs urgent attention, when you miss your medicine check-ins, or in the weekly summary if you have left it switched on.
+
+Anything you type in yourself is also saved back to Health Connect so your other health apps can see it. You can withdraw these permissions at any time in Health Connect settings.</string>
+
+    <string name="home_vitals_card_title">Your health</string>
+    <string name="home_vitals_open">Open health &amp; food</string>
+
+    <string name="home_phone_label">Your phone number</string>
+    <string name="home_phone_hint">+14155550123</string>
+    <string name="home_phone_body">If you don\'t answer the check-in on screen, AMI rings this number as a real phone call. Include the country code.</string>
+
+    <!-- Check-in call -->
+    <string name="call_incoming">Incoming check-in</string>
+    <string name="call_connected">Connected</string>
+    <string name="call_caller_name">AMI</string>
+    <string name="call_reason">Time for your %1$s</string>
+    <string name="call_answer">Answer</string>
+    <string name="call_decline">Decline</string>
+    <string name="call_hang_up">Hang up</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_back">Back</string>
+
+    <string name="settings_caregivers_title">Caregivers</string>
+    <string name="settings_caregivers_body">Order matters. The first person is emailed about every missed check-in; the others are brought in when nobody answers at all, or when the misses keep adding up.</string>
+    <string name="settings_caregivers_empty">No caregivers yet. Until one is added, a missed medicine check-in goes unreported.</string>
+    <string name="settings_caregiver_name_label">Their name (optional)</string>
+    <string name="settings_caregiver_name_hint">For example, Priya</string>
+    <string name="settings_caregiver_add">Add caregiver</string>
+    <string name="settings_caregiver_remove">Remove</string>
+    <string name="settings_caregiver_move_up">Move up the list</string>
+    <string name="settings_caregiver_role_primary">Alerted about every missed check-in</string>
+    <string name="settings_caregiver_role_second">Also alerted when nobody answers at all</string>
+    <string name="settings_caregiver_role_later">Alerted if the misses keep adding up</string>
+
+    <string name="settings_phone_save">Save phone number</string>
+
+    <string name="settings_summary_title">Weekly summary</string>
+    <string name="settings_summary_body">Every Sunday evening, AMI emails all your caregivers a plain-language summary of the week: which doses were confirmed, which were missed, and anything said about how you were feeling.</string>
+    <string name="settings_summary_toggle">Send the weekly summary</string>
+    <string name="settings_summary_send_now">Send this week\'s summary now</string>
+
+    <string name="settings_privacy_title">Privacy and activity</string>
+    <string name="settings_privacy_body">AMI never reads password fields, and refuses to read banking, payment and authenticator apps at all. It keeps a log of the steps it takes for you, which you can read or clear at any time.</string>
+    <string name="settings_open_history">Open the care report</string>
+
+    <!-- Toasts / validation -->
+    <string name="toast_medicine_added">Added %1$s at %2$s</string>
+    <string name="toast_medicine_removed">Removed %1$s</string>
+    <string name="toast_medicine_duplicate">That medicine already has a reminder at that time</string>
+    <string name="toast_medicine_invalid_name">Please enter the medicine name</string>
+    <string name="toast_medicine_invalid_time">Please choose a reminder time</string>
+    <string name="toast_email_invalid">Please enter a valid email address</string>
+    <string name="toast_caregiver_added">Caregiver added</string>
+    <string name="toast_caregiver_duplicate">That address is already on the list</string>
+    <string name="toast_phone_saved">Phone number saved</string>
+    <string name="toast_phone_invalid">Please enter the number with a country code, like +14155550123</string>
+    <string name="toast_summary_sent">Summary sent</string>
+    <string name="toast_summary_failed">Couldn\'t send the summary. Check the caregiver list and the backend settings.</string>
+
+    <string name="caregiver_position">%1$d</string>
+    <string name="vitals_value_with_unit">%1$s %2$s</string>
+    <string name="ami_cursor_listening">Listening…</string>
+    <string name="ami_trigger_stop_description">Stop AMI</string>
+    <string name="ami_trigger_description">Ask AMI</string>
+    <!-- ===== Wellbeing screen ===== -->
+    <string name="wellbeing_title">Your wellbeing story</string>
+    <string name="wellbeing_balance_title">Your balance over time</string>
+    <string name="wellbeing_working_title">What\'s working for you</string>
+
+    <string name="wellbeing_metric_stress">Stress</string>
+    <string name="wellbeing_metric_burnout">Burnout</string>
+    <string name="wellbeing_metric_connection">Connection</string>
+    <string name="wellbeing_metric_wellbeing">Wellbeing</string>
+
+    <string name="wellbeing_caption_vs_last_week">Compared with last week</string>
+    <string name="wellbeing_caption_vs_last_month">Compared with last month</string>
+    <string name="wellbeing_caption_people_week">People you spoke to this week</string>
+    <plurals name="wellbeing_caption_steady_weeks">
+        <item quantity="one">Steady for a week</item>
+        <item quantity="other">Steady for %1$d weeks</item>
+    </plurals>
+    <string name="wellbeing_caption_not_enough">Not enough recorded yet</string>
+
+    <string name="wellbeing_burnout_easing">Easing</string>
+    <string name="wellbeing_burnout_stable">Stable</string>
+    <string name="wellbeing_burnout_rising">Rising</string>
+    <string name="wellbeing_burnout_unknown">Unknown</string>
+
+    <string name="wellbeing_value_percent">%1$d%%</string>
+    <string name="wellbeing_value_count">%1$d</string>
+    <string name="wellbeing_value_none">—</string>
+
+    <string name="wellbeing_tab_stress">Stress</string>
+    <string name="wellbeing_tab_sleep">Sleep</string>
+    <string name="wellbeing_tab_social">Social</string>
+
+    <string name="wellbeing_trend_stress">Stress Trend</string>
+    <string name="wellbeing_trend_sleep">Sleep-recovery Index</string>
+    <string name="wellbeing_trend_social">Connection Index</string>
+
+    <string name="wellbeing_range_week">This week</string>
+    <string name="wellbeing_range_month">Month</string>
+    <string name="wellbeing_range_year">Year</string>
+
+    <string name="wellbeing_legend_stress">Stress count</string>
+    <string name="wellbeing_legend_sleep">Sleep recovery score</string>
+    <string name="wellbeing_legend_social">Social health</string>
+    <string name="wellbeing_legend_threshold">Seek help</string>
+
+    <!-- The two ends of the y-axis. Which one sits on top depends on the dimension. -->
+    <string name="wellbeing_axis_bad">Bad</string>
+    <string name="wellbeing_axis_normal">Normal</string>
+    <string name="wellbeing_chart_empty">Nothing recorded for this period</string>
+
+    <!-- Spoken description of the chart, which a screen reader cannot get from a canvas. -->
+    <!-- "%3$d out of 100" is a score on a fixed scale, not a count, so it does not pluralise. -->
+    <string name="wellbeing_chart_description" tools:ignore="PluralsCandidate">%1$s, %2$s. Average %3$d out of 100. %4$s</string>
+    <string name="wellbeing_chart_description_empty">%1$s, %2$s. Nothing recorded for this period.</string>
+    <plurals name="wellbeing_chart_needs_attention">
+        <item quantity="one">%1$d reading suggests talking to someone.</item>
+        <item quantity="other">%1$d readings suggest talking to someone.</item>
+    </plurals>
+    <string name="wellbeing_chart_no_attention">No reading suggests talking to someone.</string>
+
+    <string name="wellbeing_insight_calm_title">Your calm patterns</string>
+    <plurals name="wellbeing_insight_calm_body">
+        <item quantity="one">Your lowest stress lands on %1$s — about %2$d point below your other days.</item>
+        <item quantity="other">Your lowest stress lands on %1$s — about %2$d points below your other days.</item>
+    </plurals>
+    <string name="wellbeing_insight_sleep_title">Sleep influence</string>
+    <plurals name="wellbeing_insight_sleep_body">
+        <item quantity="one">After a good night\'s sleep your next-day stress runs about %1$d point lower.</item>
+        <item quantity="other">After a good night\'s sleep your next-day stress runs about %1$d points lower.</item>
+    </plurals>
+    <string name="wellbeing_insight_connection_title">Time with people</string>
+    <plurals name="wellbeing_insight_connection_body">
+        <item quantity="one">Days with company score about %1$d point higher for connection than days alone.</item>
+        <item quantity="other">Days with company score about %1$d points higher for connection than days alone.</item>
+    </plurals>
+
+    <string name="wellbeing_empty_title">Nothing recorded yet</string>
+    <string name="wellbeing_empty_body">Once daily readings are recorded, this screen shows how stress, sleep and time with people move together.</string>
+
+    <string name="wellbeing_open">Wellbeing story</string>
+    <string name="wellbeing_back">Back</string>
+    <string name="wellbeing_body">See how your sleep, your stress and your time with other people have been moving over the past weeks.</string>
+    <!-- ===== Profile / Settings (Figma "Profile - Settings") ===== -->
+    <string name="profile_section_account">Your account</string>
+    <string name="profile_section_about">About &amp; help</string>
+
+    <string name="profile_edit_profile">Edit profile</string>
+    <string name="profile_account_settings">Care settings</string>
+    <string name="profile_link_wearables">Link wearables</string>
+    <string name="profile_your_activity">Your activity</string>
+    <string name="profile_your_activity_value">Detail</string>
+    <string name="profile_health_connect">Health Connect</string>
+    <string name="profile_notifications">Notifications</string>
+    <string name="profile_account_footer">Health Connect is Android\'s own health store. AMI reads from it on this device — it is never sent anywhere.</string>
+
+    <string name="profile_about">About</string>
+    <string name="profile_privacy">Privacy centre</string>
+    <string name="profile_user_agreement">User agreement</string>
+    <string name="profile_help">Help &amp; support</string>
+    <string name="profile_report_issue">Report an issue</string>
+
+    <string name="profile_delete_data">Delete all my data</string>
+    <string name="profile_delete_title">Delete everything on this device?</string>
+    <string name="profile_delete_message">This removes every medicine, check-in, wellbeing reading, caregiver and setting AMI has stored. It cannot be undone.</string>
+    <string name="profile_delete_confirm">Delete everything</string>
+    <string name="profile_delete_cancel">Keep my data</string>
+    <string name="profile_delete_done">Everything has been deleted.</string>
+
+    <!-- Edit profile -->
+    <string name="profile_edit_title">Edit profile</string>
+    <string name="profile_name_label">What should AMI call you?</string>
+    <string name="profile_name_hint">For example, Shubham</string>
+    <string name="profile_dob_label">Date of birth (optional)</string>
+    <string name="profile_dob_placeholder">Not given</string>
+    <string name="profile_dob_choose">Choose date</string>
+    <string name="profile_dob_clear">Clear date</string>
+    <string name="profile_save">Save</string>
+    <string name="profile_saved">Profile saved</string>
+    <string name="profile_stored_locally">Your name and date of birth stay on this phone. AMI has no account and nothing here is uploaded.</string>
+
+    <!-- Connect wearable sheet (Figma "Profile - Connect Smartwear") -->
+    <string name="connect_sheet_title">Sync your health</string>
+    <string name="connect_sheet_body">Connect a watch or band through Health Connect so AMI can see your steps and vitals as they are recorded.</string>
+    <string name="connect_sheet_action">Connect Health Connect</string>
+    <string name="connect_sheet_install">Get Health Connect</string>
+    <string name="connect_sheet_close">Close</string>
+    <string name="connect_sheet_connected">Connected. AMI can read your health data.</string>
+    <string name="connect_sheet_unavailable">Health Connect is not available on this phone, so AMI cannot read from a wearable. You can still enter your numbers by hand.</string>
+
+    <!-- Static information screens -->
+    <string name="info_about_body">AMI is a digital caretaker. It reads the screen when you ask for help, speaks each step out loud, reminds you about medicine, and can tell your caregivers if a check-in is missed.
+
+It is not a medical device and does not diagnose anything.</string>
+    <string name="info_privacy_body">AMI reads the screen only while guiding a request you made, and only the text and button labels needed to work out the next step. Password fields are skipped. Banking, payment and authenticator apps are refused outright.
+
+Screen contents are never stored. What is stored on this phone: your medicines, your check-in answers, your wellbeing readings, your caregivers and your settings.
+
+The only thing that leaves this phone is a caregiver summary, sent to the addresses you chose, and the screen text sent to the AI service while a request is being guided.</string>
+    <string name="info_agreement_body">AMI is provided as-is, with no warranty. It is not a substitute for medical care or emergency services, and it cannot detect a fall or monitor you continuously.
+
+You are responsible for checking that medicine reminders match what you have actually been prescribed.</string>
+    <string name="info_help_body">The floating button starts a request. Say what you want to do in plain words, such as \"turn on the torch\" or \"call my daughter\".
+
+If AMI is not responding, check that the assistant service is on from the home screen.
+
+To change who is alerted about a missed check-in, open Care settings.</string>
+    <string name="info_report_body">Tell us what went wrong and what you expected to happen instead. Including the screen you were on helps most.</string>
+    <string name="info_report_send">Send by email</string>
+    <string name="info_report_no_email">No email app is set up on this phone.</string>
+    <string name="info_report_subject">AMI issue report</string>
+
+    <!-- ===== Caretaker report ===== -->
+    <string name="caretaker_title">Your caretaker</string>
+    <string name="caretaker_subtitle">What AMI has noticed from your check-in calls, and what might help today.</string>
+    <string name="caretaker_open">Open caretaker report</string>
+    <string name="caretaker_thinking">Looking back over your week…</string>
+
+    <string name="caretaker_noticed_title">What I\'ve noticed</string>
+    <string name="caretaker_empty_title">Nothing noted yet</string>
+    <string name="caretaker_empty_body">When AMI calls you at medicine time, it asks how you\'re feeling. Anything you mention — a headache, a bad night\'s sleep — is noted here, and turns into food and exercise suggestions.</string>
+
+    <string name="caretaker_food_title">What to eat</string>
+    <string name="caretaker_exercise_title">Exercise to follow</string>
+
+    <string name="caretaker_urgent_title">Please speak to someone</string>
+    <string name="caretaker_urgent_subject">Symptom reported to AMI</string>
+
+    <string name="caretaker_refresh">Refresh</string>
+    <string name="caretaker_speak">Read this to me</string>
+    <string name="caretaker_offline_note">Written from AMI\'s built-in guidance, because the AI service could not be reached.</string>
+
+    <!-- %1$d days affected, e.g. "Headache · 3 days, worst severe" -->
+    <string name="caretaker_symptom_days">%1$s · %2$d day(s), %3$s</string>
+    <string name="caretaker_symptom_recurring">Keeps coming back — worth mentioning to your doctor.</string>
+    <string name="caretaker_adherence">Medicines: took %1$d of %2$d doses this week.</string>
+
+    <!-- ===== Relaxation games ===== -->
+    <string name="games_title">Relax and play</string>
+    <string name="games_subtitle">Four quiet things to do. Nothing is timed, nothing is scored, and there is no way to lose.</string>
+    <string name="games_open">Relax and play</string>
+    <string name="games_home_body">A few calm minutes — breathing, bubbles, a memory game and a still pond.</string>
+
+    <string name="game_breathe_title">Breathe with me</string>
+    <string name="game_breathe_body">Follow the circle as it grows and settles. A longer breath out is what helps you unwind.</string>
+    <string name="game_breathe_start">Start breathing</string>
+    <string name="game_breathe_stop">Stop</string>
+    <string name="game_breathe_ready">Sit comfortably. Press start when you are ready.</string>
+    <string name="game_breathe_progress">Breath %1$d of %2$d</string>
+    <string name="game_breathe_done">That\'s the lot. Notice how your shoulders feel now.</string>
+
+    <string name="game_bubbles_title">Bubble burst</string>
+    <string name="game_bubbles_body">Tap the bubbles to pop them. They drift back up on their own, so take as long as you like.</string>
+    <string name="game_bubbles_count">Popped: %1$d</string>
+    <string name="game_bubbles_hint">Tap anywhere on a bubble — you don\'t need to be exact.</string>
+
+    <string name="game_memory_title">Memory pairs</string>
+    <string name="game_memory_body">Turn over two cards at a time and find the matching pairs. No clock, no score.</string>
+    <string name="game_memory_progress">Found %1$d of %2$d pairs</string>
+    <string name="game_memory_done">All pairs found. Lovely work.</string>
+    <string name="game_memory_card">Card %1$d</string>
+    <string name="game_memory_card_face">Card %1$d, showing %2$s</string>
+
+    <string name="game_pond_title">Calm pond</string>
+    <string name="game_pond_body">Touch the water and watch the rings spread. There is nothing to get right here.</string>
+    <string name="game_pond_hint">Touch anywhere, or move your finger slowly across the water.</string>
+
+    <string name="game_again">Start again</string>
+    <string name="game_back">Done for now</string>
+
+    <!-- ===== Relaxation scene copy (follows the design recording) ===== -->
+    <string name="game_breathe_h_inhale">It\'s time to relax and breathe</string>
+    <string name="game_breathe_h_hold">Now hold your breath and calm yourself</string>
+    <string name="game_breathe_h_exhale">Now let go of all your worries</string>
+    <string name="game_breathe_h_rest">Easy, right? Let\'s repeat again</string>
+    <string name="game_breathe_h_done">Well done. Notice how your shoulders feel now</string>
+
+    <string name="game_bubbles_headline">Pop out all your negative thoughts</string>
+    <string name="game_bubbles_hint_tap">Pop the bubbles by tapping</string>
+    <string name="game_bubbles_cleared">That\'s all of them gone. Well done.</string>
+
+    <string name="game_water_title">Nature touch</string>
+    <string name="game_water_headline">Being close to nature is the best way to calmness</string>
+    <string name="game_water_hint">Move your finger across the page</string>
+    <string name="game_water_body">Trail your finger through the water and watch the rings spread. Nothing to get right.</string>
+
+    <string name="game_music_title">Music therapy</string>
+    <string name="game_music_headline">Embrace the present, leave the past away</string>
+    <string name="game_music_hint">Swipe up to change the music</string>
+    <string name="game_music_body">Calm sounds to sit with. Choose a mood and let it play.</string>
+    <string name="game_music_add">Add music  +</string>
+    <string name="game_music_empty">No tracks added yet</string>
+    <string name="game_music_empty_hint">Tap Add music to choose songs already on this phone.</string>
+    <string name="game_music_prev">Previous track</string>
+    <string name="game_music_play">Play or pause</string>
+    <string name="game_music_next">Next track</string>
+
+    <string name="game_memory_headline">Find the matching pairs</string>
+    <string name="game_memory_hint">Turn over two cards at a time</string>
+
+    <string name="game_music_mood_calm">Calm</string>
+    <string name="game_music_mood_nature">Nature</string>
+    <string name="game_music_mood_gamma">Gamma waves</string>
+    <string name="game_music_mood_rain">Rain</string>
+
+    <!-- Finish panels and progress, shared by the activities that can end. -->
+    <string name="game_bubbles_done_title">All gone</string>
+    <string name="game_bubbles_progress">%1$d of %2$d let go</string>
+    <string name="game_breathe_done_title">Well done</string>
+    <string name="game_breathe_done_body">That is the whole set. Notice how your shoulders feel now.</string>
+    <string name="game_memory_done_title">All pairs found</string>
+    <string name="game_memory_done_body">Lovely work. There is a fresh set whenever you want one.</string>
+
+    <string name="game_music_add_failed">That file could not be added.</string>
+    <string name="game_music_play_failed">That track could not be played. It may have been moved or deleted.</string>
+    <string name="game_music_no_picker">This phone has no file picker, so music cannot be added.</string>
+    <plurals name="game_music_added">
+        <item quantity="one">Added 1 track</item>
+        <item quantity="other">Added %1$d tracks</item>
+    </plurals>
+</resources>

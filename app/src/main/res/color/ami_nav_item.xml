@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Selected tabs carry the brand teal; the rest sit at ami_text_secondary, which is
+  8:1 on the bar's white surface. The unselected state is deliberately not a pale
+  grey - a tab this app's users cannot read is a tab they will not press.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ami_primary" android:state_checked="true" />
+    <item android:color="@color/ami_text_secondary" />
+</selector>

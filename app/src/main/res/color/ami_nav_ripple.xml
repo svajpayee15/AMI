@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Press feedback for the tabs. Material's default ripple is a faint grey; this one is
+  the brand colour at a fifth strength, which is still clearly visible to someone who
+  needs to see that their tap registered.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.20" android:color="@color/ami_primary" android:state_pressed="true" />
+    <item android:alpha="0.14" android:color="@color/ami_primary" android:state_focused="true" />
+    <item android:alpha="0.10" android:color="@color/ami_primary" android:state_hovered="true" />
+    <item android:alpha="0.00" android:color="@color/ami_primary" />
+</selector>

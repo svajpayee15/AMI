@@ -1,0 +1,39 @@
+# --- Secrets. Nothing here may ever be committed. ---------------------------------
+#
+# local.properties holds the Gemini API key, the escalation shared secret, and the
+# release keystore passwords. server/.env holds SMTP and Twilio credentials. Both are
+# listed twice - bare and rooted - because a bare name matches at any depth and the
+# rooted one documents where the real file actually lives.
+local.properties
+/local.properties
+.env
+**/.env
+/keystore/
+*.jks
+*.keystore
+
+# --- Build output -------------------------------------------------------------------
+/build
+**/build/
+.gradle
+.kotlin
+.cxx
+.externalNativeBuild
+/captures
+*.apk
+*.aab
+
+# --- IDE ------------------------------------------------------------------------------
+# The whole directory rather than a handful of files: .idea picks up new machine-specific
+# files with every Android Studio release, and an allowlist silently falls behind.
+.idea/
+*.iml
+
+# --- Node (the escalation backend) -----------------------------------------------------
+node_modules/
+npm-debug.log*
+
+# --- OS --------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log

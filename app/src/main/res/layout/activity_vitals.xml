@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Vitals: what AMI knows, what the user can fill in, and what to eat because of it.
+
+  Step count arrives on its own from Health Connect. Everything else needs either a paired
+  device or the user typing it in, so the entry controls are first-class here rather than
+  hidden behind an edit mode.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_xl"
+        android:paddingBottom="@dimen/space_xxl">
+
+        <TextView
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vitals_title" />
+
+        <!-- Today's summary -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_accessibility" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/vitals_today" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vitalsSummary"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md" />
+
+            <TextView
+                android:id="@+id/healthConnectStatus"
+                style="@style/AmiText.Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConnectHealth"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/vitals_connect"
+                android:visibility="gone"
+                app:icon="@drawable/ic_shield" />
+        </LinearLayout>
+
+        <!-- Manual entry -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_pill" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/vitals_enter" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/vitals_enter_hint" />
+
+            <LinearLayout
+                android:id="@+id/stepperContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:orientation="vertical" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveVitals"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="@string/vitals_save"
+                app:icon="@drawable/ic_check_circle" />
+        </LinearLayout>
+
+        <!-- Food suggestions -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_eye" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/vitals_food_title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/adviceText"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/vitals_food_empty" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGetAdvice"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/vitals_food_action"
+                app:icon="@drawable/ic_speaker" />
+        </LinearLayout>
+
+        <!--
+          The wellbeing story lives under the Health tab rather than having a tab of
+          its own - four tabs is what fits at a readable size. This card is how it is
+          reached from here; the home screen still links to it directly as well.
+        -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_wb_calm" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/wellbeing_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/wellbeing_body" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenWellbeing"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/wellbeing_open"
+                app:icon="@drawable/ic_wb_calm" />
+        </LinearLayout>
+
+        <!--
+          The caretaker report sits beside the wellbeing story for the same reason: it is
+          about the body, it is opened when wanted rather than lived in, and the bottom
+          bar stays at four tabs.
+        -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_shield" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/caretaker_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/caretaker_subtitle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenCaretaker"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/caretaker_open"
+                app:icon="@drawable/ic_shield" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

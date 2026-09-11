@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The furniture every relaxation scene shares: the headline top-left, the close X
+  top-right, and the hint line along the bottom. Included into each scene's FrameLayout
+  so the four screens cannot drift apart in spacing or type.
+
+  Text is laid straight onto the illustration, so both the headline and the hint carry
+  their own shadow - see AmiGameHeadline.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <TextView
+        android:id="@+id/gameHeadline"
+        style="@style/AmiGameHeadline"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="@dimen/screen_gutter"
+        android:layout_marginTop="36dp" />
+
+    <ImageButton
+        android:id="@+id/btnGameClose"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/game_back"
+        android:padding="9dp"
+        android:src="@drawable/ic_game_close" />
+
+    <LinearLayout
+        android:id="@+id/gameHintRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="@dimen/screen_gutter"
+        android:layout_marginEnd="@dimen/screen_gutter"
+        android:layout_marginBottom="26dp"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/gameHintIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_game_tap" />
+
+        <TextView
+            android:id="@+id/gameHint"
+            style="@style/AmiGameHint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_md"
+            android:layout_weight="1" />
+    </LinearLayout>
+</merge>

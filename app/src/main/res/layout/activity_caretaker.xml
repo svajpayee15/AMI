@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The caretaker report: what AMI heard on the check-in calls, and what to do about it.
+
+  Three cards in the order the person cares about them - what was noticed, what to eat,
+  how to move. The urgent card sits above all of them and replaces the advice entirely
+  rather than sitting alongside it, because CaretakerAgent never produces both.
+
+  Type and spacing follow the app's scale, which is set for readers with reduced vision.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_xl"
+        android:paddingBottom="@dimen/space_xxl">
+
+        <TextView
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/caretaker_title" />
+
+        <TextView
+            style="@style/AmiText.Body.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_sm"
+            android:text="@string/caretaker_subtitle" />
+
+        <!-- ===== Urgent: shown alone, never beside advice ===== -->
+        <LinearLayout
+            android:id="@+id/caretakerUrgentCard"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/caretaker_urgent_title" />
+
+            <TextView
+                android:id="@+id/caretakerUrgentText"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm" />
+        </LinearLayout>
+
+        <!-- ===== Empty state ===== -->
+        <LinearLayout
+            android:id="@+id/caretakerEmptyCard"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/caretaker_empty_title" />
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/caretaker_empty_body" />
+        </LinearLayout>
+
+        <!-- ===== What I've noticed ===== -->
+        <LinearLayout
+            android:id="@+id/caretakerNoticedCard"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/caretaker_noticed_title" />
+
+            <TextView
+                android:id="@+id/caretakerNoted"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/caretaker_thinking" />
+
+            <!-- One row per symptom, filled in by CaretakerActivity. -->
+            <LinearLayout
+                android:id="@+id/caretakerSymptomList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <!-- ===== What to eat ===== -->
+        <LinearLayout
+            android:id="@+id/caretakerFoodCard"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/caretaker_food_title" />
+
+            <LinearLayout
+                android:id="@+id/caretakerFoodList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <!-- ===== Exercise ===== -->
+        <LinearLayout
+            android:id="@+id/caretakerExerciseCard"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/caretaker_exercise_title" />
+
+            <LinearLayout
+                android:id="@+id/caretakerExerciseList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/caretakerOfflineNote"
+            style="@style/AmiText.Body.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="@string/caretaker_offline_note"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/caretakerDisclaimer"
+            style="@style/AmiText.Body.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCaretakerSpeak"
+            style="@style/AmiButton"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:text="@string/caretaker_speak"
+            app:icon="@drawable/ic_speaker" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCaretakerRefresh"
+            style="@style/AmiButton.Secondary"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="@string/caretaker_refresh" />
+
+    </LinearLayout>
+</ScrollView>

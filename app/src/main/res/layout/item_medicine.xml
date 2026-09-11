@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One scheduled dose. Inflated into the home screen's schedule card. A medicine due
+  twice a day produces two of these rows, each with its own time, its own "taken
+  today" state and its own remove control, because each dose is confirmed separately.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:baselineAligned="false"
+    android:background="@drawable/bg_medicine_row"
+    android:paddingStart="@dimen/space_md"
+    android:paddingEnd="@dimen/space_sm"
+    android:paddingTop="@dimen/space_sm"
+    android:paddingBottom="@dimen/space_sm">
+
+    <ImageView
+        android:id="@+id/medicineIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_icon_circle"
+        android:padding="11dp"
+        android:src="@drawable/ic_pill"
+        app:tint="@color/ami_on_primary_container"
+        android:importantForAccessibility="no"
+                android:contentDescription="@null" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="@dimen/space_md"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/medicineName"
+            style="@style/AmiText.Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/medicineDosage"
+            style="@style/AmiText.Body.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_clock"
+                app:tint="@color/ami_text_secondary"
+                android:importantForAccessibility="no"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/medicineTime"
+                style="@style/AmiText.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/medicineTakenBadge"
+            style="@style/AmiPill"
+            android:layout_marginTop="@dimen/space_sm"
+            android:background="@drawable/bg_pill_success"
+            android:textColor="@color/ami_on_success_container"
+            android:text="@string/home_medicine_taken_today"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnRemoveMedicine"
+        android:layout_width="@dimen/touch_target_small"
+        android:layout_height="@dimen/touch_target_small"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_trash"
+        android:contentDescription="@string/home_medicine_remove"
+        app:tint="@color/ami_danger"
+        android:scaleType="centerInside"
+        android:padding="@dimen/space_md" />
+
+</LinearLayout>

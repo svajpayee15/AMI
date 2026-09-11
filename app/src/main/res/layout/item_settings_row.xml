@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One row of a settings group: a label, optionally a value or a switch, optionally a
+  chevron. The design's rows are ~44dp; these are @dimen/touch_target, because this app
+  sets its own floor for how small a tappable thing is allowed to get.
+
+  A row shows either a chevron or a switch, never both - the two mean different things
+  (goes somewhere / changes something here) and a row that shows both says neither.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/touch_target"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:baselineAligned="false"
+    android:paddingStart="@dimen/card_padding"
+    android:paddingEnd="@dimen/card_padding"
+    android:paddingTop="@dimen/space_sm"
+    android:paddingBottom="@dimen/space_sm"
+    android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/rowTitle"
+        style="@style/AmiText.Body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/rowValue"
+        style="@style/AmiText.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_sm"
+        android:visibility="gone" />
+
+    <!--
+      SwitchMaterial, as used by the weekly-summary toggle on the care settings screen,
+      not MaterialSwitch: the latter is the Material 3 widget and takes its style from a
+      Material 3 theme. This app's theme is MaterialComponents, so it got no style at
+      all - which left it invisible and, worse, crashed the screen on measure, because
+      an unstyled SwitchCompat defaults showText to true with no text to draw.
+    -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/rowSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_sm"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        app:showText="false" />
+
+    <ImageView
+        android:id="@+id/rowChevron"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/space_sm"
+        android:src="@drawable/ic_chevron_right"
+        android:importantForAccessibility="no"
+        android:contentDescription="@null"
+        android:visibility="gone" />
+
+</LinearLayout>

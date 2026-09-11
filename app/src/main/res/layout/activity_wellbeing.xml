@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Wellbeing story: the headline metrics, one trend at a time, and the patterns the
+  history actually supports.
+
+  Built from the Figma "Progress Tracking / Stress Trend" frame. Structure and order
+  follow the design; type and colour follow this app's scale, which is set for readers
+  with reduced vision. The design's 11-12sp grey captions and hairline rules would have
+  broken that contract, so captions sit at 18sp on AA-checked colours instead.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_xl"
+        android:paddingBottom="@dimen/space_xxl">
+
+        <TextView
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wellbeing_title" />
+
+        <!-- ===== Empty state: shown instead of the grid when nothing is recorded ===== -->
+        <LinearLayout
+            android:id="@+id/wellbeingEmpty"
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/AmiText.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wellbeing_empty_title" />
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/wellbeing_empty_body" />
+        </LinearLayout>
+
+        <!-- ===== 2x2 headline grid ===== -->
+        <LinearLayout
+            android:id="@+id/metricGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <include
+                    android:id="@+id/metricStress"
+                    layout="@layout/item_wellbeing_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="@dimen/space_sm"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/metricBurnout"
+                    layout="@layout/item_wellbeing_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false"
+                android:layout_marginTop="@dimen/space_sm">
+
+                <include
+                    android:id="@+id/metricConnection"
+                    layout="@layout/item_wellbeing_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="@dimen/space_sm"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/metricWellbeing"
+                    layout="@layout/item_wellbeing_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ===== Balance over time ===== -->
+        <TextView
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:text="@string/wellbeing_balance_title" />
+
+        <!--
+          Dimension tabs. A real segmented control rather than a TabLayout: the selected
+          segment needs to read as raised and labelled at this type size, and TabLayout's
+          indicator is a 2dp underline.
+        -->
+        <LinearLayout
+            android:id="@+id/dimensionTabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_segment_track"
+            android:padding="@dimen/space_xs"
+            android:layout_marginTop="@dimen/space_md">
+
+            <TextView
+                android:id="@+id/tabStress"
+                style="@style/AmiSegment"
+                android:text="@string/wellbeing_tab_stress" />
+
+            <TextView
+                android:id="@+id/tabSleep"
+                style="@style/AmiSegment"
+                android:text="@string/wellbeing_tab_sleep" />
+
+            <TextView
+                android:id="@+id/tabSocial"
+                style="@style/AmiSegment"
+                android:text="@string/wellbeing_tab_social" />
+        </LinearLayout>
+
+        <!-- ===== Trend card ===== -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <TextView
+                android:id="@+id/trendTitle"
+                style="@style/AmiText.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/rangeTabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_segment_track"
+                android:padding="@dimen/space_xs"
+                android:layout_marginTop="@dimen/space_md">
+
+                <TextView
+                    android:id="@+id/rangeWeek"
+                    style="@style/AmiSegment.Compact"
+                    android:text="@string/wellbeing_range_week" />
+
+                <TextView
+                    android:id="@+id/rangeMonth"
+                    style="@style/AmiSegment.Compact"
+                    android:text="@string/wellbeing_range_month" />
+
+                <TextView
+                    android:id="@+id/rangeYear"
+                    style="@style/AmiSegment.Compact"
+                    android:text="@string/wellbeing_range_year" />
+            </LinearLayout>
+
+            <!-- Legend. Swatches are shapes, not colour words, so the key survives
+                 colour-blindness and greyscale. -->
+            <LinearLayout
+                android:id="@+id/chartLegend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false"
+                android:layout_marginTop="@dimen/space_md">
+
+                <View
+                    android:id="@+id/legendSeriesSwatch"
+                    android:layout_width="20dp"
+                    android:layout_height="4dp" />
+
+                <TextView
+                    android:id="@+id/legendSeriesLabel"
+                    style="@style/AmiText.Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_sm" />
+
+                <View
+                    android:id="@+id/legendThresholdSwatch"
+                    android:layout_width="20dp"
+                    android:layout_height="4dp"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:background="@color/ami_chart_threshold" />
+
+                <TextView
+                    android:id="@+id/legendThresholdLabel"
+                    style="@style/AmiText.Label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:text="@string/wellbeing_legend_threshold" />
+            </LinearLayout>
+
+            <com.example.ami.wellbeing.TrendChartView
+                android:id="@+id/trendChart"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/chart_height"
+                android:layout_marginTop="@dimen/space_md" />
+        </LinearLayout>
+
+        <!-- ===== What's working ===== -->
+        <TextView
+            android:id="@+id/workingTitle"
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:text="@string/wellbeing_working_title" />
+
+        <!--
+          Filled at runtime, one card per supported pattern. The design shows two side by
+          side; they stack here because the body text is a full sentence and a half-width
+          column at 20sp turns it into a ladder.
+        -->
+        <LinearLayout
+            android:id="@+id/insightList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_md" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/AmiButton.Secondary"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xl"
+            android:text="@string/wellbeing_back" />
+
+    </LinearLayout>
+</ScrollView>

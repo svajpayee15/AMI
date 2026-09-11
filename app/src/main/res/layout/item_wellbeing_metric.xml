@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One headline metric, used four times across the 2x2 grid.
+
+  The design puts the icon tile beside the text. At this app's type scale that leaves
+  roughly four characters per line in a half-width card, so the tile sits above the text
+  instead and the wording gets the full column. The grid rhythm of the design survives;
+  the truncation does not.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_ami_card"
+    android:padding="@dimen/space_md">
+
+    <ImageView
+        android:id="@+id/metricIcon"
+        android:layout_width="@dimen/metric_tile"
+        android:layout_height="@dimen/metric_tile"
+        android:padding="12dp"
+        android:importantForAccessibility="no"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/metricLabel"
+        style="@style/AmiText.Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_sm" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:layout_marginTop="2dp">
+
+        <TextView
+            android:id="@+id/metricValue"
+            style="@style/AmiText.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/metricArrow"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginStart="@dimen/space_xs"
+            android:importantForAccessibility="no"
+            android:contentDescription="@null" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/metricCaption"
+        style="@style/AmiText.Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_xs" />
+
+</LinearLayout>

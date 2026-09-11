@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One bullet in the food or exercise list. Inflated by CaretakerActivity. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/caretakerLineText"
+    style="@style/AmiText.Body"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_sm" />

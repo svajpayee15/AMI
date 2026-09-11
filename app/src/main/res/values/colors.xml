@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+      AMI palette - designed for the target persona (older adults, possibly with
+      reduced vision). Every text/background pair below meets WCAG AA at minimum,
+      most meet AAA. Deliberately no grey-on-grey and no hairline separators.
+    -->
+
+    <!-- Surfaces -->
+    <color name="ami_bg">#FFF4F2EE</color>
+    <color name="ami_surface">#FFFFFFFF</color>
+    <color name="ami_surface_alt">#FFFAF9F7</color>
+    <color name="ami_border">#FFCFCAC2</color>
+
+    <!-- Text: 16.5:1 and 8.0:1 on ami_surface -->
+    <color name="ami_text_primary">#FF15191C</color>
+    <color name="ami_text_secondary">#FF4C555E</color>
+
+    <!-- Brand: white on ami_primary = 6.4:1 -->
+    <color name="ami_primary">#FF00695C</color>
+    <color name="ami_primary_pressed">#FF004D40</color>
+    <color name="ami_on_primary">#FFFFFFFF</color>
+    <color name="ami_primary_container">#FFCFEAE4</color>
+    <color name="ami_on_primary_container">#FF00382F</color>
+
+    <!-- Status -->
+    <color name="ami_success">#FF1B5E20</color>
+    <color name="ami_success_container">#FFD3EBD4</color>
+    <color name="ami_on_success_container">#FF0C3B10</color>
+
+    <color name="ami_warning_container">#FFFBE7C6</color>
+    <color name="ami_on_warning_container">#FF4A2C00</color>
+
+    <color name="ami_danger">#FFA3261E</color>
+
+    <!-- Form fields: border is 3:1 against the field background (AA for UI components) -->
+    <color name="ami_field_bg">#FFFFFFFF</color>
+    <color name="ami_field_border">#FF7C858B</color>
+    <color name="ami_field_border_focused">#FF00695C</color>
+    <color name="ami_hint">#FF5F686F</color>
+
+    <!--
+      Wellbeing screen. The Figma uses pale pastel tints on a cream ground; these are
+      the same hues pulled down until the text and marks on them clear WCAG AA, which
+      the originals did not.
+    -->
+    <!-- One line colour per dimension, so the plot says which tab is open. -->
+    <color name="ami_chart_line_stress">#FF6A4C9C</color>
+    <color name="ami_chart_line_sleep">#FF4F46B8</color>
+    <color name="ami_chart_line_social">#FF1B6B3A</color>
+    <color name="ami_chart_threshold">#FFB3261E</color>
+    <color name="ami_chart_grid">#FFD8D3CB</color>
+
+    <color name="ami_tile_calm">#FFDCE7F5</color>
+    <color name="ami_on_tile_calm">#FF1B3A5C</color>
+    <color name="ami_tile_focus">#FFFAE0CE</color>
+    <color name="ami_on_tile_focus">#FF5C3310</color>
+    <color name="ami_tile_connect">#FFF8DCE6</color>
+    <color name="ami_on_tile_connect">#FF5E1B33</color>
+    <color name="ami_tile_thrive">#FFE6EFC8</color>
+    <color name="ami_on_tile_thrive">#FF33400C</color>
+
+    <!-- Segmented control: selected segment is a raised white pill on a sunken track. -->
+    <color name="ami_segment_track">#FFEAE5DE</color>
+    <color name="ami_segment_selected">#FFFFFFFF</color>
+
+    <!--
+      Relaxation games. Deliberately low-saturation: these screens are meant to settle
+      someone, and a bright arcade palette does the opposite. Each is dark enough to hold
+      white text and to stay distinguishable for the most common colour-vision deficiencies,
+      which is why no red/green pair appears among them.
+    -->
+    <color name="ami_game_bg">#FFEFF4F6</color>
+    <color name="ami_bubble_1">#FF6BA8C4</color>
+    <color name="ami_bubble_2">#FF7FB3A0</color>
+    <color name="ami_bubble_3">#FF9B93C7</color>
+    <color name="ami_bubble_4">#FFD9A46B</color>
+    <color name="ami_bubble_5">#FF6FA8A0</color>
+    <color name="ami_ripple_1">#FF4F8AA8</color>
+    <color name="ami_ripple_2">#FF5E97B5</color>
+    <color name="ami_ripple_3">#FF6E8FB0</color>
+    <color name="ami_ripple_4">#FF7FA6B8</color>
+    <color name="ami_breath_circle">#FF7FB3A0</color>
+    <color name="ami_breath_ring">#FFCFE3DC</color>
+    <color name="ami_card_down">#FFCFEAE4</color>
+    <color name="ami_card_matched">#FFD3EBD4</color>
+
+    <!--
+      Relaxation scene palette, sampled directly from the reference recording rather than
+      eyeballed, so the painted backgrounds land on the same colours as the design.
+      Each scene is a two-stop vertical gradient; the cut-out layers sit on top.
+    -->
+    <color name="game_sky_top">#FF5AA8C4</color>
+    <color name="game_sky_bottom">#FFB4D9E4</color>
+    <color name="game_grass_top">#FF6EC331</color>
+    <color name="game_grass_bottom">#FF35661F</color>
+
+    <color name="game_wall_top">#FF8699B4</color>
+    <color name="game_wall_bottom">#FFA3BAD2</color>
+
+    <color name="game_water_top">#FF6F88E4</color>
+    <color name="game_water_bottom">#FF3E5CC4</color>
+
+    <color name="game_room_top">#FF5B4038</color>
+    <color name="game_room_bottom">#FF8A6A4F</color>
+
+    <color name="game_memory_top">#FF7FA9B8</color>
+    <color name="game_memory_bottom">#FFBFD5DC</color>
+
+    <!-- Chrome shared by every scene. -->
+    <color name="game_cream">#FFFDF8F2</color>
+    <color name="game_ink">#FF4A2C1A</color>
+    <color name="game_ink_soft">#FF7A5B44</color>
+    <color name="game_accent">#FFE08A3C</color>
+    <color name="game_headline">#FFFFF6E2</color>
+    <color name="game_headline_shadow">#99203040</color>
+    <color name="game_scrim">#33FFFFFF</color>
+</resources>

@@ -1,0 +1,38 @@
+# Copy this file to local.properties and fill in your own values.
+# local.properties is gitignored and must never be committed - it holds real secrets.
+#
+#     cp local.properties.example local.properties
+#
+# Every value below is optional. With all of them blank the app still builds, installs
+# and runs: the model-driven features fall back to their scripted paths and the backend
+# calls are simply refused. Nothing crashes, and AmiApplication logs an AMI_CONFIG
+# warning naming whichever one is missing.
+
+# Android SDK location. Android Studio writes this for you on first open.
+sdk.dir=C\:\\Users\\you\\AppData\\Local\\Android\\Sdk
+
+# --- Gemini -----------------------------------------------------------------------
+# From Google AI Studio: https://aistudio.google.com/apikey
+# Drives the guided-navigation planner, the medicine check-in conversation and the
+# caretaker report. Blank is fine - all three have deterministic fallbacks.
+GEMINI_API_KEY=
+
+# --- Escalation backend -------------------------------------------------------------
+# The Node server in server/. Use http://10.0.2.2:3000/ to reach a server running on
+# your own machine from the Android emulator. The trailing slash is required.
+AMI_BACKEND_BASE_URL=http://10.0.2.2:3000/
+
+# Must match SHARED_SECRET in server/.env. Generate one with:
+#     openssl rand -hex 32
+AMI_ESCALATION_SHARED_SECRET=
+
+# --- Release signing ------------------------------------------------------------------
+# Only needed to build a signed release. Leave blank for debug builds; the release
+# variant then stays unsigned rather than failing the build.
+#
+# Keep the .jks file and these passwords backed up somewhere safe and out of the repo:
+# losing them means you can never update the app on Play under the same identity.
+AMI_RELEASE_STORE_FILE=keystore/ami-release.jks
+AMI_RELEASE_STORE_PASSWORD=
+AMI_RELEASE_KEY_ALIAS=ami-release
+AMI_RELEASE_KEY_PASSWORD=

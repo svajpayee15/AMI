@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Settings, rebuilt on the AMI design system.
+  This screen was previously an iOS-styled mock of an account page - 13sp grey section
+  headers, 52dp rows, "Log out" and "Apple Health" entries that led nowhere. It is now
+  the caregiver's setup screen and follows the same 20sp / 68dp / 2dp-border rules as
+  the rest of the app, because the person tapping it may well be the elderly user.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_lg"
+        android:paddingBottom="@dimen/space_xxl">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/AmiButton.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_back"
+            app:icon="@drawable/ic_chevron_left" />
+
+        <TextView
+            style="@style/AmiText.Display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:text="@string/settings_title" />
+
+        <!-- Caregiver chain -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_shield" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/settings_caregivers_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_caregivers_body" />
+
+            <TextView
+                android:id="@+id/caregiversEmpty"
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_caregivers_empty" />
+
+            <LinearLayout
+                android:id="@+id/caregiversContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:orientation="vertical" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/space_lg"
+                android:background="@color/ami_border" />
+
+            <TextView
+                style="@style/AmiText.FieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="@string/settings_caregiver_name_label" />
+
+            <EditText
+                android:id="@+id/etCaregiverName"
+                style="@style/AmiInput"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="@string/settings_caregiver_name_hint"
+                android:inputType="textCapWords"
+                android:autofillHints="name"
+                android:imeOptions="actionNext" />
+
+            <TextView
+                style="@style/AmiText.FieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_caregiver_label" />
+
+            <EditText
+                android:id="@+id/etCaregiverEmail"
+                style="@style/AmiInput"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="@string/home_caregiver_hint"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
+                android:imeOptions="actionDone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddCaregiver"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_caregiver_add"
+                app:icon="@drawable/ic_plus" />
+        </LinearLayout>
+
+        <!-- The user's own phone number -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_call" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_phone_label" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_phone_body" />
+
+            <EditText
+                android:id="@+id/etUserPhone"
+                style="@style/AmiInput"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:hint="@string/home_phone_hint"
+                android:inputType="phone"
+                android:autofillHints="phone"
+                android:imeOptions="actionDone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSavePhone"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_phone_save"
+                app:icon="@drawable/ic_check_circle" />
+        </LinearLayout>
+
+        <!-- Weekly summary -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_mail" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/settings_summary_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_summary_body" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchWeeklySummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/touch_target"
+                android:layout_marginTop="@dimen/space_md"
+                android:textSize="20sp"
+                android:textColor="@color/ami_text_primary"
+                android:text="@string/settings_summary_toggle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendSummaryNow"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_summary_send_now"
+                app:icon="@drawable/ic_mail" />
+        </LinearLayout>
+
+        <!-- Activity and privacy -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_lock" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/settings_privacy_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_privacy_body" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenHistory"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/settings_open_history"
+                app:icon="@drawable/ic_report" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

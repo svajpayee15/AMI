@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark palette. Same AA/AAA contrast discipline as the light set. -->
+
+    <color name="ami_bg">#FF0E1213</color>
+    <color name="ami_surface">#FF1A2022</color>
+    <color name="ami_surface_alt">#FF222A2C</color>
+    <color name="ami_border">#FF3A4346</color>
+
+    <!-- 15:1 and 8.5:1 on ami_surface -->
+    <color name="ami_text_primary">#FFF1F4F4</color>
+    <color name="ami_text_secondary">#FFB6C0C2</color>
+
+    <!-- Light teal carries the brand in dark mode; dark text sits on it -->
+    <color name="ami_primary">#FF66D9C8</color>
+    <color name="ami_primary_pressed">#FF8FE7DA</color>
+    <color name="ami_on_primary">#FF00382F</color>
+    <color name="ami_primary_container">#FF005146</color>
+    <color name="ami_on_primary_container">#FFB8ECE3</color>
+
+    <color name="ami_success">#FF7CD98A</color>
+    <color name="ami_success_container">#FF123D17</color>
+    <color name="ami_on_success_container">#FFBFEFC4</color>
+
+    <color name="ami_warning_container">#FF4A3200</color>
+    <color name="ami_on_warning_container">#FFFBE7C6</color>
+
+    <color name="ami_danger">#FFF2B8B5</color>
+
+    <color name="ami_field_bg">#FF222A2C</color>
+    <color name="ami_field_border">#FF97A2A5</color>
+    <color name="ami_field_border_focused">#FF66D9C8</color>
+    <color name="ami_hint">#FFA6B0B3</color>
+
+    <!-- Wellbeing screen, dark. Tiles become deep grounds with light content on them. -->
+    <!-- One line colour per dimension, so the plot says which tab is open. -->
+    <color name="ami_chart_line_stress">#FFC9ADF0</color>
+    <color name="ami_chart_line_sleep">#FFB4B0F5</color>
+    <color name="ami_chart_line_social">#FF8FD6A8</color>
+    <color name="ami_chart_threshold">#FFF2B8B5</color>
+    <color name="ami_chart_grid">#FF3F444A</color>
+
+    <color name="ami_tile_calm">#FF1B3048</color>
+    <color name="ami_on_tile_calm">#FFCFE3FA</color>
+    <color name="ami_tile_focus">#FF4A2C12</color>
+    <color name="ami_on_tile_focus">#FFFBDCC4</color>
+    <color name="ami_tile_connect">#FF4A1B2E</color>
+    <color name="ami_on_tile_connect">#FFFAD4E2</color>
+    <color name="ami_tile_thrive">#FF2E3A12</color>
+    <color name="ami_on_tile_thrive">#FFE1EFB6</color>
+
+    <color name="ami_segment_track">#FF2A2E33</color>
+    <color name="ami_segment_selected">#FF3E444B</color>
+</resources>

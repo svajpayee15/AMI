@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Home screen. Built around self-contained cards rather than one flat run of bare
+  widgets separated by hairlines. Sizing throughout targets the app's actual audience:
+  20sp+ body text, 68dp controls, and visible 2dp field borders rather than the
+  platform's thin underline, which is easy to miss with reduced vision.
+
+  Everything the person being cared for uses day to day lives here. Anything the
+  *caregiver* sets up once - who gets alerted, the weekly summary, the activity log -
+  lives in Settings, so the home screen stays short enough to take in at a glance.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingEnd="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_xl"
+        android:paddingBottom="@dimen/space_xxl">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:baselineAligned="false">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_icon_circle"
+                android:padding="13dp"
+                android:src="@drawable/ic_ami_brain"
+                app:tint="@color/ami_on_primary_container"
+                android:importantForAccessibility="no"
+                android:contentDescription="@null" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/space_md"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleText"
+                    style="@style/AmiText.Display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_title" />
+
+                <TextView
+                    style="@style/AmiText.Body.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_subtitle" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnOpenSettings"
+                android:layout_width="@dimen/touch_target_small"
+                android:layout_height="@dimen/touch_target_small"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_settings"
+                android:scaleType="centerInside"
+                android:padding="@dimen/space_md"
+                app:tint="@color/ami_text_secondary"
+                android:contentDescription="@string/settings_title" />
+        </LinearLayout>
+
+        <!-- Card 1: assistant service state -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_accessibility" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_service_card_title" />
+
+                <TextView
+                    android:id="@+id/serviceStatusPill"
+                    style="@style/AmiPill"
+                    android:background="@drawable/bg_pill_warning"
+                    android:textColor="@color/ami_on_warning_container"
+                    android:text="@string/home_service_inactive" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/serviceStatusBody"
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_service_body_inactive" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnableService"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_service_enable"
+                app:icon="@drawable/ic_accessibility" />
+        </LinearLayout>
+
+        <!-- Card 2: medicine schedule -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_pill" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_medicine_card_title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvMedListEmpty"
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_medicine_empty" />
+
+            <LinearLayout
+                android:id="@+id/medicineListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:orientation="vertical" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/space_lg"
+                android:background="@color/ami_border" />
+
+            <TextView
+                style="@style/AmiText.FieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="@string/home_medicine_name_label" />
+
+            <EditText
+                android:id="@+id/etMedName"
+                style="@style/AmiInput"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="@string/home_medicine_name_hint"
+                android:inputType="textCapSentences"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext" />
+
+            <TextView
+                style="@style/AmiText.FieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_medicine_dosage_label" />
+
+            <!--
+              Read back verbatim during the check-in call and never reworded, so the
+              caregiver's own words are what the person hears.
+            -->
+            <EditText
+                android:id="@+id/etMedDosage"
+                style="@style/AmiInput"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="@string/home_medicine_dosage_hint"
+                android:inputType="textCapSentences"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext" />
+
+            <TextView
+                style="@style/AmiText.FieldLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_medicine_time_label" />
+
+            <!--
+              A picker rather than a free-text "HH:MM 24h format" field: typing a
+              zero-padded 24-hour time on a phone keypad is a poor ask for this
+              audience, and it was the only input that could fail validation.
+            -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPickTime"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:gravity="start|center_vertical"
+                android:text="@string/home_medicine_time_placeholder"
+                app:icon="@drawable/ic_clock" />
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/home_medicine_multi_hint" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddMed"
+                style="@style/AmiButton"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_medicine_add"
+                app:icon="@drawable/ic_plus" />
+        </LinearLayout>
+
+        <!-- Card 3: this week, for whoever is keeping an eye on things -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_report" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_report_card_title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/homeAdherenceSummary"
+                style="@style/AmiText.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/report_no_data" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenHistory"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_report_open"
+                app:icon="@drawable/ic_report" />
+        </LinearLayout>
+
+        <!-- Card 4: health at a glance -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_eye" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_vitals_card_title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/homeVitalsSummary"
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenVitals"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_vitals_open"
+                app:icon="@drawable/ic_speaker" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenWellbeing"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/wellbeing_open"
+                app:icon="@drawable/ic_wb_calm" />
+        </LinearLayout>
+
+        <!-- Card 5: who gets told, set up once -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_mail" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/home_caregiver_card_title" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/homeCaregiverSummary"
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_caregiver_none" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnManageCaregivers"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/home_caregiver_manage"
+                app:icon="@drawable/ic_shield" />
+        </LinearLayout>
+
+        <!--
+          Card 6: something to do. On Home rather than buried under Health because the
+          moment someone wants this is the moment they are least inclined to go looking
+          for it - it has to be on the screen they are already on.
+        -->
+        <LinearLayout
+            style="@style/AmiCard"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:baselineAligned="false">
+
+                <ImageView
+                    style="@style/AmiPointIcon"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_wb_calm" />
+
+                <TextView
+                    style="@style/AmiText.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/space_md"
+                    android:text="@string/games_title" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/AmiText.Body.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/games_home_body" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenGames"
+                style="@style/AmiButton.Secondary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="@string/games_open"
+                app:icon="@drawable/ic_wb_calm" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Nature touch. No counter and no reset: this is the one scene that deliberately offers
+  nothing to achieve, so there is nothing to start over. See PondActivity.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/game_water_bottom">
+
+    <com.example.ami.games.PondView
+        android:id="@+id/pondView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/game_water_hint" />
+
+    <include layout="@layout/include_game_chrome" />
+</FrameLayout>
