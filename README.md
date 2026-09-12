@@ -72,21 +72,6 @@ npm start
 
 ---
 
-## Secrets
-
-Nothing secret is committed, and nothing secret belongs in the repo.
-
-| File | Holds | Status |
-|---|---|---|
-| `local.properties` | Gemini key, shared secret, keystore passwords | gitignored |
-| `keystore/*.jks` | Release signing key | gitignored |
-| `server/.env` | SMTP and Twilio credentials | gitignored |
-
-`local.properties.example` and `server/.env.example` are the templates, and carry no real
-values. The API key travels as an `x-goog-api-key` header rather than a query parameter so
-it stays out of URLs, logs and crash reports.
-
----
 
 ## Not what this is
 
